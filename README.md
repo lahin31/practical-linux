@@ -51,7 +51,7 @@ ubuntu
 
 ## Basic Commands
 
-### pwd (print working directory)
+### pwd
 
 It will let you know the folder you're currently in.
 
@@ -60,7 +60,7 @@ ubuntu@ip-192-168-0-1:~$ pwd
 /home/ubuntu
 ```
 
-### ls (list files and directories)
+### ls
 
 It will list down all files and directories in the current working directory.
 
@@ -68,6 +68,32 @@ It will list down all files and directories in the current working directory.
 ubuntu@ip-192-168-0-1:/var$ ls
 backups  crash  local  log   opt  snap   tmp
 cache    lib    lock   mail  run  spool  www
+```
+
+Use `ls -a` to view hidden files. 
+
+### mkdir
+
+Used to create a directory/folder.
+
+```
+ubuntu@ip-192-168-0-1:~$ ls
+confidentials info.txt
+ubuntu@ip-192-168-0-1:~$ mkdir user-data
+ubuntu@ip-192-168-0-1:~$ ls
+confidentials info.txt user-data
+```
+
+user-data is the new folder.
+
+### rm -rf [directoryName]
+
+```
+ubuntu@ip-192-168-0-1:~$ ls
+confidentials info.txt user-data
+ubuntu@ip-192-168-0-1:~$ rm -rf user-data
+ubuntu@ip-192-168-0-1:~$ ls
+confidentials info.txt
 ```
 
 ### cat
@@ -94,14 +120,117 @@ Hello World
 This is result content
 ```
 
-### rm {filename} - delete a file
+### touch
+
+Used to create a file.
 
 ```
+ubuntu@ip-192-168-0-1:~$ touch info.txt
+ubuntu@ip-192-168-0-1:~$ ls
+info.txt
+```
+
+### rm [filename]
+
+Used to delete a file.
+
+```
+ubuntu@ip-192-168-0-1:~$ ls
+info.txt result.txt
 ubuntu@ip-192-168-0-1:~$ rm info.txt
 ubuntu@ip-192-168-0-1:~$ ls
 result.txt
 ```
 
-(Deleting a file requires permission, which we will discuss in the permissions section.)
+(Deleting a file requires permission, which we will discuss in the next section.)
+
+### cp
+
+Used to copy a file content to a different file.
+
+```
+ubuntu@ip-192-168-0-1:~$ cp info_1.txt info_2.txt
+```
+
+The content of info_1.txt is duplicated into info_2.txt.
+
+### mv
+
+Used to moves or rename a file or folder.
+
+```
+ubuntu@ip-192-168-0-1:~$ ls
+info_1.txt
+ubuntu@ip-192-168-0-1:~$ mv info_1.txt info_2.txt
+ubuntu@ip-192-168-0-1:~$ ls
+info_2.txt
+```
+
+## Advance Commands
+
+### ls -l
+
+It will display the following information for each file in the current directory: 
+
+* Permissions
+* Number of hardlinks
+* File owner
+* File group
+* File size
+* Modification time
+* Filename
+
+```
+ubuntu@ip-192-168-0-1:/var/www/server$ ls -l
+-rw-r--r--   1 root root  1241 Aug 14 05:23 app.js
+drwxr-xr-x   2 root root  4096 Aug 14 05:23 config
+drwxr-xr-x  11 root root  4096 Sep 17 11:59 controllers
+....(more)
+```
+
+For `-rw-r--r--   1 root root  1241 Aug 14 05:23 app.js`
+
+* -: Indicates `app.js` is a regular file. 
+* rw-: Permissions for the file owner (read r, write w, no execute -).
+* r--: Permissions for the group (read r, no write -, no execute -).
+* r--: Permissions for others (read r, no write -, no execute -).
+* 1: Indicates the number of hard links to the file.
+* root: Indicates who owns the file. In that case, root.
+* root: Indicates the group that own the file. In that case, it means "root(group)".
+* 1241: Indicates the size of the file in bytes.
+* "Aug 14 05:23": Indicates last modification date and time of the file.
+* "app.js": Name of the file.
+
+For directory it will start with 'd' symbol.
+
+### chown
+
+Used to change the owner and(/or) group for a particular file or directory.
+
+```
+// Change owner:
+ubuntu@ip-192-168-0-1:/var/www/server$ sudo chown lahin app.js
+ubuntu@ip-192-168-0-1:/var/www/server$ ls -l app.js
+-rw-r--r-- 1 lahin root 1241 Aug 14 05:23 app.js
+```
+
+```
+// Change group:
+ubuntu@ip-192-168-0-1:/var/www/server$ sudo chown :developers app.js
+ubuntu@ip-192-168-0-1:/var/www/server$ ls -l app.js
+-rw-r--r-- 1 lahin developers 1241 Aug 14 05:23 app.js
+```
+
+### chmod
+
+(coming)
+
+### history
+
+Displays entire history of commands run in the terminal.
+
+### nano [filename]
+
+Opens a text editor in the terminal to edit a file.
 
 More to continue...
