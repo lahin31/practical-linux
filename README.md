@@ -79,4 +79,29 @@ ubuntu@ip-192-168-0-1:~$ cat info.txt
 Hello World
 ```
 
+If you want to view this with line number.
+
+```
+ubuntu@ip-192-168-0-1:~$ cat -n info.txt
+1 Hello World
+```
+
+If you want to view more than one file.
+
+```
+ubuntu@ip-192-168-0-1:~$ cat info.txt result.txt
+Hello World
+This is result content
+```
+
+### rm {filename} - delete a file
+
+```
+ubuntu@ip-192-168-0-1:~$ rm info.txt
+ubuntu@ip-192-168-0-1:~$ ls
+result.txt
+```
+
+(Deleting a file requires permission, which we will discuss in the permissions section.)
+
 More to continue...
