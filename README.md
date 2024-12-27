@@ -229,13 +229,12 @@ Used to change the mode. Linux permission numbering system follows,
 * For write; w = 2
 * For execute; e = 1
 
-We have `-rw-r--r-- 1 lahin root 1241 Aug 14 05:23 app.js`. We want to give the execute previliage to others.
+We have `-rw-r--r-- 1 lahin root 1241 Aug 14 05:23 app.js`. We want to give the execute privilege to others.
 
 ```
 ubuntu@ip-192-168-0-1:/var/www/server$ sudo chmod 645 app.js
 ubuntu@ip-192-168-0-1:/var/www/server$ ls -l app.js
 -rw-r--r-x 1 root root 1241 Aug 14 05:23 app.js
-
 ```
 
 As we ran this `sudo chmod 645 app.js` the 645 means 
@@ -251,3 +250,23 @@ Displays entire history of commands run in the terminal.
 ### nano [filename]
 
 Opens a text editor in the terminal to edit a file.
+
+### head -[numberOfLine] [filename]
+
+Used to get the file's content based on the number of line given.
+
+```
+ubuntu@ip-192-168-0-1:/var/www/server$ head -3 app.js
+const express = require("express");
+const cors = require("cors");
+const morgan = require("morgan");
+```
+
+### grep
+
+Used to get the matching rows for a perticular word or sentence in a file.
+
+```
+ubuntu@ip-192-168-0-1:/var/www/server$ grep 'require("express")' app.js
+const express = require("express");
+```
