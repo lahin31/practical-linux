@@ -328,3 +328,9 @@ drwxr-xr-x   2 root root  4096 Aug 14 05:23 config
 drwxr-xr-x  11 root root  4096 Sep 17 11:59 controllers
 ...(more)
 ```
+
+You can also delete an alias
+
+```
+ubuntu@ip-192-168-0-1:/var/www/server$ unalias l
+```
