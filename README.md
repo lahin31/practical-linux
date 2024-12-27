@@ -316,3 +316,15 @@ ubuntu@ip-192-168-0-1:~$ find /var/www -name app.js
 /var/www/server/app.js
 ```
 
+### alias
+
+Used to create a shorthand for a longer command or sequence of commands, making them easier and quicker to execute.
+
+```
+ubuntu@ip-192-168-0-1:/var/www/server$ alias l="ls -l"
+ubuntu@ip-192-168-0-1:/var/www/server$ l
+-rw-r--r-- 1 lahin developers 1241 Aug 14 05:23 app.js
+drwxr-xr-x   2 root root  4096 Aug 14 05:23 config
+drwxr-xr-x  11 root root  4096 Sep 17 11:59 controllers
+...(more)
+```
