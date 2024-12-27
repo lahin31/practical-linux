@@ -223,7 +223,26 @@ ubuntu@ip-192-168-0-1:/var/www/server$ ls -l app.js
 
 ### chmod
 
-(coming)
+Used to change the mode. Linux permission numbering system follows,
+
+* For read; r = 4
+* For write; w = 2
+* For execute; e = 1
+
+We have `-rw-r--r-- 1 lahin root 1241 Aug 14 05:23 app.js`. We want to give the execute previliage to others.
+
+```
+ubuntu@ip-192-168-0-1:/var/www/server$ sudo chmod 645 app.js
+ubuntu@ip-192-168-0-1:/var/www/server$ ls -l app.js
+-rw-r--r-x 1 root root 1241 Aug 14 05:23 app.js
+
+```
+
+As we ran this `sudo chmod 645 app.js` the 645 means 
+
+* For owner we have 6, r = 4 and write = 2; (4 + 2) is equal to 6
+* For group we have 4, r = 4; means 4 
+* For others we have 5, r = 4 and execute = 1; (4 + 1) is equal to 5
 
 ### history
 
@@ -232,5 +251,3 @@ Displays entire history of commands run in the terminal.
 ### nano [filename]
 
 Opens a text editor in the terminal to edit a file.
-
-More to continue...
