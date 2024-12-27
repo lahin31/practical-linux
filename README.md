@@ -353,5 +353,6 @@ And the remote instance should have your public key. During the connection, the 
 
 #### How can you verify remote instance have client's public key 
 
-The remote instance must have your public key in its `~/.ssh/authorized_keys` file.
+The remote instance must have your public key in its `~/.ssh/authorized_keys` file. Generally if it's your first time connecting to the remote instance, most probably it automatically copies your public key to the authorized_keys file.
 
+If you are using AWS EC2 instance during the instance launch, AWS sets up the public key in the `~/.ssh/authorized_keys` file of the default user on the instance.
