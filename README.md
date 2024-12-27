@@ -1,6 +1,6 @@
 # Practical Linux (Ubuntu)
 
-Linux is the most useful UNIX based OS. These are some useful information that will help you greatly.
+Linux is the most useful UNIX based OS. These are some useful information that can significantly enhance your productivity and efficiency in your job.
 
 ## Folder Structure
 
@@ -166,6 +166,16 @@ ubuntu@ip-192-168-0-1:~$ ls
 info_2.txt
 ```
 
+### *
+
+In Linux it is a wildcard character. Used with `ls`, `cp`, `rm`, and `find` to match files or directories with names that fit a specific pattern.
+
+```
+ubuntu@ip-192-168-0-1:~$ ls *.txt
+info_1.txt info_2.txt
+```
+It lists only files with the (.txt) extension in the current directory.
+
 ## Advance Commands
 
 ### ls -l
@@ -270,3 +280,39 @@ Used to get the matching rows for a perticular word or sentence in a file.
 ubuntu@ip-192-168-0-1:/var/www/server$ grep 'require("express")' app.js
 const express = require("express");
 ```
+
+### cmp
+
+Used to compare two files byte by byte.
+
+```
+ubuntu@ip-192-168-0-1:/var/www/server$ cmp info1.txt info2.txt 
+info1.txt info2.txt differ: byte 12, line 1
+```
+
+That means line 1 is not identical.
+
+### diff 
+
+Used to compare two files line by line and display the differences between them.
+
+```
+ubuntu@ip-192-168-0-1:/var/www/server$ diff -u info1.txt info2.txt 
+--- info1.txt	2024-12-27 10:41:24.248772500 +0000
++++ info2.txt	2024-12-27 10:41:58.995875405 +0000
+@@ -1,2 +1,2 @@
+-My name is Lahin.
+-I love designing systems.
++My name is John.
++I like Javascript.
+```
+
+### find
+
+Used to search for files and directories within a given path.
+
+```
+ubuntu@ip-192-168-0-1:~$ find /var/www -name app.js
+/var/www/server/app.js
+```
+
