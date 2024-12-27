@@ -334,3 +334,24 @@ You can also delete an alias
 ```
 ubuntu@ip-192-168-0-1:/var/www/server$ unalias l
 ```
+
+## How to Connect from your Laptop to a Linux Cloud Instance with SSH
+
+Secure Shell (SSH) is a protocol that allows you to securely connect to a remote server. It's a common method for accessing Linux cloud instances.
+
+### How SSH works
+
+Lets say you want to connect from your pc to an instance via SSH. Generally SSH uses port 22 for communication. You mush ensure this port is not blocked by the firewall.
+
+In your laptop you must ensure SSH Client.
+
+SSH key-based authentication is more secure than password-based authentication. We have Private key and Public key.
+
+You can't access to the instance unless you have the instance's Private Key. Typically it is (.)pem extension file.
+
+And the remote instance should have your public key. During the connection, the instance uses this public key to verify the private key sent by the client.
+
+#### How can you verify remote instance have client's public key 
+
+The remote instance must have your public key in its `~/.ssh/authorized_keys` file.
+
