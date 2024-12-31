@@ -356,3 +356,15 @@ And the remote instance should have your public key. During the connection, the 
 The remote instance must have your public key in its `~/.ssh/authorized_keys` file. Generally if it's your first time connecting to the remote instance, most probably it automatically copies your public key to the authorized_keys file.
 
 If you are using AWS EC2 instance during the instance launch, AWS sets up the public key in the `~/.ssh/authorized_keys` file of the default user on the instance.
+
+## User Management
+
+It is one of the most important concept. You should/must know about this. Essential for SECURITY perspective.
+
+### Create a new user
+
+```
+ubuntu@ip-192-168-0-1:/$ sudo adduser [username]
+```
+
+This will ask you for a password and additional user details.
