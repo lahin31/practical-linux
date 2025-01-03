@@ -387,3 +387,21 @@ ubuntu@ip-192-168-0-1:/$ sudo adduser [username]
 ```
 
 This will ask you for a password and additional user details.
+
+### Change user's password
+
+```
+ubuntu@ip-192-168-0-1:/$ sudo passwd [username]
+```
+
+### Add user to a particular group
+
+```
+ubuntu@ip-192-168-0-1:/$ sudo usermod -aG [groupname] [username]
+```
+
+### Delete a specific user
+
+```
+ubuntu@ip-192-168-0-1:/$ sudo deluser [username]
+```
