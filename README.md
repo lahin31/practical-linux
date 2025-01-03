@@ -376,6 +376,10 @@ The remote instance must have your public key in its `~/.ssh/authorized_keys` fi
 
 If you are using AWS EC2 instance during the instance launch, AWS sets up the public key in the `~/.ssh/authorized_keys` file of the default user on the instance.
 
+#### What should be done if there is no public key available for a particular user?
+
+(coming)
+
 ## User Management
 
 It is one of the most important concept. You should/must know about this. Essential for SECURITY perspective.
