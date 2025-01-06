@@ -378,7 +378,29 @@ If you are using AWS EC2 instance during the instance launch, AWS sets up the pu
 
 #### What should be done if there is no public key available for a particular user?
 
-(coming)
+If there is no Public Key available for a perticular user inside authorized_keys file, then the user can't access the instance.
+
+You need to generate the public key in your local machine.
+
+```
+ssh-keygen -t rsa -b 4096 -C "muhammad.lahin@gmail.com"
+```
+
+- It will create a new RSA key pair with 4096-bit encryption.
+- The -C flag associates the key with the email provided, which helps with identification.
+- By default, the private key (id_rsa) and public key (id_rsa.pub) are stored in the .ssh directory of your home folder.
+
+This will create a new file inside, location `/Users/mizanurlahin/.ssh/id_rsa.pub`.
+
+Copy the content.
+
+Run this,
+
+```
+cat /Users/mizanurlahin/.ssh/id_rsa.pub | ssh username@server_ip 'mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys && chmod 700 ~/.ssh'
+```
+
+This will put the public key inside authorized_keys file. Now the instance have the public key of the user.
 
 ## User Management
 
@@ -409,3 +431,7 @@ ubuntu@ip-192-168-0-1:/$ sudo usermod -aG [groupname] [username]
 ```
 ubuntu@ip-192-168-0-1:/$ sudo deluser [username]
 ```
+
+## Copying one or more files from Local to Remote Server or Two Remote Servers
+
+(coming)
