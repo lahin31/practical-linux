@@ -439,7 +439,7 @@ It is used to securely transfer files or directories between systems via SSH (Se
 ### Copy a file from local to remote host
 
 ```
-scp info.txt [remote_host_username]@[remote_host_ip]:
+scp info.txt [remote_host_username]@[remote_host_ip]:/path/to/destination/
 ```
 
 Here, `info.txt` is the actual file that needs to be transferred. `remote_host_username` and `remote_host_ip` refer to the username and IP address of the remote host. `/path/to/destination/` is the destination path where the file(info.txt) will be copied.
@@ -451,3 +451,26 @@ scp [remote_host_username]@[remote_host_ip]:/path/to/info.txt /local/destination
 ```
 
 Here, `remote_host_username` and `remote_host_ip` refer to the username and IP address of the remote host. `/path/to/info.txt` is the path with file attached, that needs to be transferred. `/local/destination/` is the local system directory where the file(info.txt) will be copied.
+
+## Process Management
+
+It refers to the controlling and monitoring of processes running on a Linux system. It involves starting, stopping, pausing, resuming, managing priorities, and monitoring system resources utilized by processes to ensure efficient and stable operation.
+
+### Show all active processes
+
+```
+ubuntu@ip-192-168-0-1:/$ ps
+```
+
+You will see these information.
+
+- PID -> The unique identifier, we call it Process ID.
+- TTY -> The terminal (or pseudo-terminal) associated with the process.
+- TIME -> The total CPU time the process has used since it started.
+- CMD -> The command or the name of the executable that started this process.
+
+### Show all processes
+
+```
+ubuntu@ip-192-168-0-1:/$ ps aux
+```
