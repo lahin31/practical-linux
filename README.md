@@ -402,6 +402,27 @@ cat /Users/mizanurlahin/.ssh/id_rsa.pub | ssh username@server_ip 'mkdir -p ~/.ss
 
 This will put the public key inside authorized_keys file. Now the instance have the public key of the user.
 
+Let's consider another example,
+
+You have two AWS Lightsail instances, both residing in the same Availability Zone. Instance A needs to connect to Instance B via SSH.
+
+From Instance A you can't just type, `ssh ubuntu@{ip_of_instance_b}`
+
+To enable SSH access, you must configure Instance A's public key in the authorized_keys file of Instance B.
+
+- Step 1 - Generate an SSH Key Pair (From Instance A): `ssh-keygen -t rsa -b 4096`
+
+- Step 2 - Copy the Public Key: `cat ~/.ssh/id_rsa.pub`. This will display the public key. Copy it.
+
+- Step 3 - Add the Public Key to authorized_keys of Instance B: `nano ~/.ssh/authorized_keys`, paste the public key of Instance A.
+
+- Step 4 - Set Proper Permissions inside Instance B:
+
+```
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/authorized_keys
+```
+
 ## User Management
 
 It is one of the most important concept. You should/must know about this. Essential for SECURITY perspective.
