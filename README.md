@@ -511,3 +511,16 @@ Provides a dynamic, real-time view of running processes, showing CPU and memory 
 ```
 ubuntu@ip-192-168-0-1:/$ top
 ```
+
+## Swap Memory
+
+It is a space or area on a disk that is used when the amount of physical RAM is full. When the system runs out of RAM, it swaps out less frequently used memory pages to the Swap Memory, freeing up RAM for more critical tasks.
+
+```
+ubuntu@ip-192-168-0-1:/$ free -h
+```
+
+You will see,
+
+- Memory usage
+- Swap usage
