@@ -495,3 +495,19 @@ You will see these information.
 ```
 ubuntu@ip-192-168-0-1:/$ ps aux
 ```
+
+For example, when you run `pm2 start app.js`, a process starts in the background. You can find this process using the ps command. Running `ps aux | grep pm2` will provide information such as:
+
+- USER: The username that owns the process.
+- PID: The Process ID, a unique number identifying the process.
+- %CPU: The percentage of CPU the process is currently using.
+- %MEM: The percentage of memory the process is currently using.
+  and more.
+
+### Real time view of all running process
+
+Provides a dynamic, real-time view of running processes, showing CPU and memory usage.
+
+```
+ubuntu@ip-192-168-0-1:/$ top
+```
