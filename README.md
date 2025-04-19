@@ -544,3 +544,59 @@ Shows available and used disk space on all mounted filesystems.
 ```
 ubuntu@ip-192-168-0-1:/$ df -h
 ```
+
+## PING - Network Troubleshooting
+
+`ping` is a very useful command so that we can troubleshoot network connectivity.
+
+Let's say from your system want to check connectivity of google website. You can either put ip address of google or directly the actual domain.
+
+```
+mizanurlahin@Mizanurs-MacBook-Pro ~ % ping google.com
+PING google.com (142.250.182.142): 56 data bytes
+64 bytes from 142.250.182.142: icmp_seq=0 ttl=59 time=31.100 ms
+64 bytes from 142.250.182.142: icmp_seq=1 ttl=59 time=35.991 ms
+64 bytes from 142.250.182.142: icmp_seq=2 ttl=59 time=29.149 ms
+64 bytes from 142.250.182.142: icmp_seq=3 ttl=59 time=36.358 ms
+64 bytes from 142.250.182.142: icmp_seq=4 ttl=59 time=35.116 ms
+^C
+--- google.com ping statistics ---
+5 packets transmitted, 5 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 29.149/33.543/36.358/2.887 ms
+```
+
+As you can see 0% packet loss that means we can successfully make connection from our system to google.
+
+if you try to use 192.0.2.1, which is a reserved ip for demo,
+
+```
+mizanurlahin@Mizanurs-MacBook-Pro ~ % ping 192.0.2.1
+PING 192.0.2.1 (192.0.2.1): 56 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+Request timeout for icmp_seq 2
+Request timeout for icmp_seq 3
+Request timeout for icmp_seq 4
+^C
+--- 192.0.2.1 ping statistics ---
+6 packets transmitted, 0 packets received, 100.0% packet loss
+```
+
+You will get 100.0% packet loss.
+
+### Why the ping command can't connect to a network?
+
+- Firewall: If there is a firewall on the destination network and it doesn't have an inbound rule allowing traffic from your network, then the connection will be blocked and the ping will fail.
+
+You also need to check the outbound rules of your system.
+
+```
+ubuntu@ip-192-168-0-1:/$ sudo ufw status
+Status: inactive
+```
+
+- Internet Connection: If either your system or the destination has no internet connection or is experiencing network issues, the `ping` command won't be able to reach the destination and will fail.
+
+- ICMP: Some servers are configured to silently disable the ICMP requests (common for security reasons), meaning ping will not respond even if the host is up and reachable.
+
+- DNS Resolution: If you’re pinging a domain name and there’s an issue with DNS, your system might not be able to resolve the IP address. Example, if your system can’t reach a DNS server (due to misconfiguration or no internet) or the DNS server is down.
