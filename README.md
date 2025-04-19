@@ -595,6 +595,8 @@ ubuntu@ip-192-168-0-1:/$ sudo ufw status
 Status: inactive
 ```
 
+**Status: inactive** it means the Firewall is not currently active — so none of its inbound or outbound rules are being enforced.
+
 - Internet Connection: If either your system or the destination has no internet connection or is experiencing network issues, the `ping` command won't be able to reach the destination and will fail.
 
 - ICMP: Some servers are configured to silently disable the ICMP requests (common for security reasons), meaning ping will not respond even if the host is up and reachable.
