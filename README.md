@@ -602,3 +602,41 @@ Status: inactive
 - ICMP: Some servers are configured to silently disable the ICMP requests (common for security reasons), meaning ping will not respond even if the host is up and reachable.
 
 - DNS Resolution: If you’re pinging a domain name and there’s an issue with DNS, your system might not be able to resolve the IP address. Example, if your system can’t reach a DNS server (due to misconfiguration or no internet) or the DNS server is down.
+
+## SS - Network Troubleshooting
+
+ss is used to display information about sockets — things like open ports, listening services, established connections etc.
+
+Let's say you are using Node.js and you are serving this with NGINX.
+
+To check about the information of NGINX
+
+```
+ubuntu@ip-192-168-0-1:/$ sudo ss -tulpn | grep nginx
+```
+
+Let's understand each part of the command,
+
+- **ss**: lists all open sockets.
+- **-tulpn**
+  - **-t**: TCP
+  - **-u**: UDP
+  - **-l**: Listening
+  - **-p**: Show process info
+  - **-n**: Don't resolve names in DNS
+- **grep nginx**: filters for lines related to Nginx.
+
+Output can be,
+
+```
+tcp    LISTEN   0       128          0.0.0.0:80         0.0.0.0:*     users:(("nginx",pid=1234,fd=6))
+tcp    LISTEN   0       128          [::]:80            [::]:80       users:(("nginx",pid=1234,fd=7))
+```
+
+Means NGINX is accepting connections on port 80 from **any IPv4 and IPV6 address**.
+
+### Do you want to block this NGINX access from the outside?
+
+Open `/etc/nginx/sites-available/default` and replace `listen 80;` to `listen 127.0.0.1:80;`.
+
+Now restart the NGINX, `sudo systemctl restart nginx`
