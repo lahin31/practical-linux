@@ -51,6 +51,18 @@ ubuntu
 
 ## Basic Commands
 
+### Get public ip address
+
+```
+ubuntu@ip-192-168-0-1:~$ curl -4 ifconfig.me
+```
+
+### Get private ip address
+
+```
+ubuntu@ip-192-168-0-1:~$ ip a
+```
+
 ### pwd
 
 It will let you know the folder you're currently in.
@@ -640,3 +652,56 @@ Means NGINX is accepting connections on port 80 from **any IPv4 and IPV6 address
 Open `/etc/nginx/sites-available/default` and replace `listen 80;` to `listen 127.0.0.1:80;`.
 
 Now restart the NGINX, `sudo systemctl restart nginx`
+
+## Excute a script after intence rebooted
+
+Let's say your instance suddenly got rebooted. You were using pm2. So pm2 stopped.
+
+Let's write a (.sh) script that will start the pm2 service after the instance rebooted.
+
+Create a file called start_script.sh inside `/usr/local/bin/initial/` (I created initial directory)
+
+```
+#!/bin/bash
+
+# Full system PATH
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+# Start Server
+cd /var/www/my_project/server/ || {
+  echo "$(date) - Failed to access Server directory" >> /var/log/my_project-startup.log
+  exit 1
+}
+
+sudo pm2 start npm --name server -- run dev
+
+# Start Client
+cd /var/www/my_project/client/ || {
+    echo "$(date) - Failed to access Client directory" >> /var/log/my_project-startup.log
+    exit 1
+}
+sudo pm2 start ecosystem.config.cjs
+
+# Save process list (no restart needed)
+sudo pm2 save --force
+```
+
+Make sure you make the file executable,
+
+```
+sudo chmod +x /usr/local/bin/initial/start_script.sh
+```
+
+Run, `sudo crontab -e`.
+
+And paste,
+
+```
+@reboot /usr/local/bin/initial/start_script.sh >> /var/log/my_project-startup.log 2>&1
+```
+
+You can test it by removing all pm2 services, `pm2 delete all`
+
+Run, `sudo reboot`
+
+Then you can re-enter the instance and check.
