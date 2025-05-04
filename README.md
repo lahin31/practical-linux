@@ -700,6 +700,8 @@ And paste,
 @reboot /usr/local/bin/initial/start_script.sh >> /var/log/my_project-startup.log 2>&1
 ```
 
+**`sudo crontab -e` edits the root user’s crontab, so any @reboot or other cron jobs added there will run as root.**
+
 You can test it by removing all pm2 services, `pm2 delete all`
 
 Run, `sudo reboot`
