@@ -501,6 +501,16 @@ There,
 
 - warn_days is the Number of days before expiration to warn the user
 
+### su or switch user
+
+You can switch from one to another user.
+
+```
+su - [username]
+```
+
+This will prompt for the password of [username], not the current user.
+
 ## Copying one or more files from Local to Remote Server or Two Remote Servers
 
 It is used to securely transfer files or directories between systems via SSH (Secure Shell).
