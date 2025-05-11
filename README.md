@@ -453,6 +453,8 @@ This will ask you for a password and additional user details.
 ubuntu@ip-192-168-0-1:/$ sudo passwd [username]
 ```
 
+It asks for your current password (since you're not root). Then it prompts you to enter a new password for the ubuntu user. It asks again to confirm the new password. If both entries match and meet password policy requirements, the password will be updated.
+
 ### Add user to a particular group
 
 ```
@@ -462,8 +464,10 @@ ubuntu@ip-192-168-0-1:/$ sudo usermod -aG [groupname] [username]
 ### Delete a specific user
 
 ```
-ubuntu@ip-192-168-0-1:/$ sudo deluser [username]
+root@ip-192-168-0-1:/$ deluser [username]
 ```
+
+It will delete the ubuntu user account from the system.
 
 ## Copying one or more files from Local to Remote Server or Two Remote Servers
 
@@ -677,8 +681,8 @@ sudo pm2 start npm --name server -- run dev
 
 # Start Client
 cd /var/www/my_project/client/ || {
-    echo "$(date) - Failed to access Client directory" >> /var/log/my_project-startup.log
-    exit 1
+  echo "$(date) - Failed to access Client directory" >> /var/log/my_project-startup.log
+  exit 1
 }
 sudo pm2 start ecosystem.config.cjs
 
