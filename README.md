@@ -469,6 +469,38 @@ root@ip-192-168-0-1:/$ deluser ubuntu
 
 It will delete the ubuntu user account from the system.
 
+### /etc/passwd and /etc/shadow
+
+```
+root@ip-192-168-0-1:/$ cat /etc/passwd
+```
+
+You will see a list of,
+
+**username:password:UID:GID:comment:home_directory:shell**
+
+if you type,
+
+```
+root@ip-192-168-0-1:/$ cat /etc/shadow
+```
+
+**username:hashed_password:last_password_change:min_days:max_days:warn_days:inactive_days:expire_date:reserved**
+
+There,
+
+- username is Username.
+
+- hashed_password is the user's hashed password using SHA-512 ($6$) and salt (HqLmS2Aa).
+
+- last_password_change is the Last password change (days since Jan 1, 1970).
+
+- min_days is the Minimum days between password changes. The user must wait x amount of days after a password change before being allowed to change it again.
+
+- max_days is the Maximum days before password must be changed. The password must be changed within x amount of days of the last password change date.
+
+- warn_days is the Number of days before expiration to warn the user
+
 ## Copying one or more files from Local to Remote Server or Two Remote Servers
 
 It is used to securely transfer files or directories between systems via SSH (Secure Shell).
