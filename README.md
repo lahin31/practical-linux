@@ -469,6 +469,18 @@ root@ip-192-168-0-1:/$ deluser ubuntu
 
 It will delete the ubuntu user account from the system.
 
+### Give a user `root` privilege
+
+```
+root@ip-192-168-0-1:/$ sudo usermod -aG sudo [username]
+```
+verify? switch to that user and type,
+
+```
+root@ip-192-168-0-1:/$ sudo whoami
+```
+You should see "root".
+
 ### /etc/passwd and /etc/shadow
 
 ```
