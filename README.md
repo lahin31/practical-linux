@@ -380,7 +380,7 @@ SSH key-based authentication is more secure than password-based authentication. 
 
 You can't access to the instance unless you have the instance's Private Key. Typically it is (.)pem extension file.
 
-And the remote instance should have your public key. During the connection, the instance uses this public key to verify a signed key that was created by the private key sent by the client.
+And the remote instance should have your public key. During the connection, the instance uses this public key to verify a signed key that was created by the private key sent by the client. Once the verification is successful then everything is good to go.
 
 #### How can you verify remote instance have client's public key
 
