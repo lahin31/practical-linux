@@ -378,7 +378,7 @@ In your laptop you must ensure SSH Client.
 
 SSH key-based authentication is more secure than password-based authentication. We have Private key and Public key.
 
-You can't access to the instance unless you have the instance's Private Key. Typically it is (.)pem extension file.
+You can't access to the instance unless you (as client) have the Private Key.
 
 And the remote instance should have your public key. During the connection, the instance uses this public key to verify a signed key that was created by the private key sent by the client. Once the verification is successful then everything is good to go.
 
