@@ -372,7 +372,7 @@ Secure Shell (SSH) is a protocol that allows you to securely connect to a remote
 
 ### How SSH works
 
-Lets say you want to connect from your pc to an instance via SSH. Generally SSH uses port 22 for communication. You mush ensure this port is not blocked by the firewall.
+Lets say you want to connect from your pc to an instance via SSH. Generally SSH uses port 22 for communication. You must ensure this port is not blocked by the firewall.
 
 In your laptop you must ensure SSH Client.
 
@@ -380,7 +380,7 @@ SSH key-based authentication is more secure than password-based authentication. 
 
 You can't access to the instance unless you have the instance's Private Key. Typically it is (.)pem extension file.
 
-And the remote instance should have your public key. During the connection, the instance uses this public key to verify the private key sent by the client.
+And the remote instance should have your public key. During the connection, the instance uses this public key to verify a signed key that was created by the private key sent by the client.
 
 #### How can you verify remote instance have client's public key
 
